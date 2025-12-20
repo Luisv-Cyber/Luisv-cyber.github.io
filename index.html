@@ -2,417 +2,261 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Luis Vega | Projects</title>
-  <meta name="description" content="Luis Vega — IT / Security Projects Portfolio" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Luis Vega | Security & Infrastructure</title>
 
   <style>
-    :root{
-      --bg: #0b1020;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.08);
-      --text: #e9ecf2;
-      --muted: rgba(233,236,242,.72);
-      --border: rgba(255,255,255,.12);
-      --shadow: 0 18px 50px rgba(0,0,0,.35);
-      --accent: #7c5cff;
-      --accent2:#23c9ff;
-      --ring: rgba(124,92,255,.35);
-    }
-    [data-theme="light"]{
-      --bg: #f6f7fb;
-      --panel: rgba(0,0,0,.04);
-      --panel2: rgba(0,0,0,.06);
-      --text: #0f172a;
-      --muted: rgba(15,23,42,.68);
-      --border: rgba(15,23,42,.12);
-      --shadow: 0 18px 50px rgba(2,6,23,.10);
-      --accent: #5b5cff;
-      --accent2:#0ea5e9;
-      --ring: rgba(91,92,255,.25);
+    :root {
+      --bg: #070b14;
+      --panel: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.12);
+      --text: #e6e9f0;
+      --muted: #aab0c2;
+      --accent: #4cc9ff;
+      --accent2: #6f7cff;
+      --shadow: 0 30px 80px rgba(0,0,0,0.55);
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--text);
       background:
-        radial-gradient(1200px 600px at 15% 10%, rgba(124,92,255,.25), transparent 55%),
-        radial-gradient(900px 500px at 85% 20%, rgba(35,201,255,.18), transparent 60%),
-        radial-gradient(700px 420px at 50% 90%, rgba(124,92,255,.18), transparent 55%),
+        radial-gradient(800px 500px at 15% 20%, rgba(76,201,255,.18), transparent 60%),
+        radial-gradient(800px 500px at 85% 20%, rgba(111,124,255,.18), transparent 60%),
         var(--bg);
-      color:var(--text);
-      line-height:1.5;
     }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 70px;}
-    .nav{
-      position:sticky; top:0; z-index:50;
+
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
       backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(0,0,0,.25), transparent);
-      padding:14px 0;
+      border-bottom: 1px solid var(--border);
+      background: rgba(7,11,20,.7);
     }
-    .nav-inner{
-      max-width:1100px; margin:0 auto; padding:0 18px;
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
-    .dot{
-      width:10px; height:10px; border-radius:999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 6px var(--ring);
+
+    .nav span { font-weight: 700; }
+    .nav a {
+      margin-left: 18px;
+      color: var(--muted);
     }
-    .menu{display:flex; gap:14px; flex-wrap:wrap; align-items:center}
-    .menu a{
-      padding:8px 10px;
-      border-radius:10px;
-      color:var(--muted);
-      border:1px solid transparent;
+    .nav a:hover { color: var(--text); }
+
+    .wrap {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
     }
-    .menu a:hover{color:var(--text); border-color:var(--border); background:var(--panel);}
-    .right{display:flex; gap:10px; align-items:center}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:9px 12px;
-      border-radius:999px;
-      border:1px solid var(--border);
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .avatar-wrap { margin: auto; }
+    }
+
+    /* AVATAR */
+    .avatar-wrap {
+      position: relative;
+      width: 280px;
+      height: 360px;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .avatar-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        120deg,
+        rgba(76,201,255,.25),
+        transparent 40%,
+        rgba(111,124,255,.25)
+      );
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* HERO TEXT */
+    .hero-card {
       background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 36px;
       box-shadow: var(--shadow);
-      color:var(--muted);
-      font-size:14px;
     }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px;
-      border-radius:14px;
-      border:1px solid var(--border);
-      background: linear-gradient(135deg, rgba(124,92,255,.18), rgba(35,201,255,.12));
-      box-shadow: var(--shadow);
-      color:var(--text);
-      font-weight:600;
-      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+
+    h1 {
+      font-size: clamp(30px, 4vw, 44px);
+      margin: 0 0 12px;
+      line-height: 1.1;
     }
-    .btn:hover{transform: translateY(-1px); border-color: rgba(124,92,255,.35);}
-    .btn:active{transform: translateY(0);}
-    .btn.ghost{background:var(--panel); color:var(--text);}
-    .toggle{
-      cursor:pointer;
-      user-select:none;
-      background:var(--panel);
-      border:1px solid var(--border);
-      border-radius:999px;
-      padding:8px 10px;
-      color:var(--muted);
+
+    p { color: var(--muted); }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
     }
-    .toggle:hover{color:var(--text)}
-    .hero{
-      padding:34px 0 18px;
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:18px;
-      align-items:stretch;
+
+    .tag {
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      font-size: 13px;
     }
-    @media (max-width: 900px){
-      .hero{grid-template-columns:1fr; padding-top:24px;}
+
+    .buttons a {
+      display: inline-block;
+      margin-right: 10px;
+      margin-top: 10px;
+      padding: 12px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(76,201,255,.2), rgba(111,124,255,.2));
+      font-weight: 600;
     }
-    .card{
-      border:1px solid var(--border);
+
+    /* PROJECTS */
+    h2 { margin-top: 80px; }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .project {
       background: var(--panel);
-      border-radius:22px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 22px;
       box-shadow: var(--shadow);
-      overflow:hidden;
     }
-    .hero-card{padding:28px;}
-    h1{
-      margin:0 0 10px;
-      font-size: clamp(28px, 4vw, 44px);
-      letter-spacing:-.6px;
-      line-height:1.15;
+
+    .project h3 { margin-top: 0; }
+
+    footer {
+      margin-top: 80px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
-    .sub{
-      margin:0 0 18px;
-      color:var(--muted);
-      font-size:16px;
-    }
-    .badges{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px}
-    .badge{
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background: var(--panel2);
-      color:var(--muted);
-      font-size:13px;
-    }
-    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
-    .side{
-      padding:18px;
-      display:flex; flex-direction:column; gap:12px;
-    }
-    .side h3{margin:0; font-size:16px}
-    .side p{margin:0; color:var(--muted); font-size:14px}
-    .side .mini{
-      border:1px solid var(--border);
-      background: var(--panel2);
-      border-radius:18px;
-      padding:14px;
-    }
-    .section{padding:26px 0 10px;}
-    .section h2{
-      margin:0 0 10px;
-      font-size:22px;
-      letter-spacing:-.2px;
-    }
-    .section p{margin:0 0 16px; color:var(--muted)}
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-    @media (max-width: 980px){
-      .grid{grid-template-columns: repeat(2,1fr);}
-    }
-    @media (max-width: 620px){
-      .grid{grid-template-columns: 1fr;}
-    }
-    .project{
-      padding:18px;
-      border-radius:22px;
-      border:1px solid var(--border);
-      background: linear-gradient(180deg, var(--panel2), var(--panel));
-      box-shadow: var(--shadow);
-      position:relative;
-      overflow:hidden;
-      min-height: 180px;
-    }
-    .project:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(450px 180px at 20% 0%, rgba(124,92,255,.22), transparent 60%),
-                  radial-gradient(350px 160px at 85% 10%, rgba(35,201,255,.18), transparent 65%);
-      pointer-events:none;
-      opacity:.9;
-    }
-    .project > *{position:relative}
-    .kicker{
-      font-size:12px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:var(--muted);
-      margin-bottom:10px;
-    }
-    .project h3{margin:0 0 8px; font-size:18px; letter-spacing:-.2px}
-    .project p{margin:0 0 14px; color:var(--muted); font-size:14px}
-    .tags{display:flex; flex-wrap:wrap; gap:8px}
-    .tag{
-      font-size:12px;
-      color:var(--muted);
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.02);
-      padding:6px 9px;
-      border-radius:999px;
-    }
-    .proj-actions{margin-top:14px; display:flex; gap:10px; flex-wrap:wrap}
-    .footer{
-      margin-top:34px;
-      padding-top:18px;
-      border-top:1px solid var(--border);
-      color:var(--muted);
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
-      font-size:14px;
-    }
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
   </style>
 </head>
 
 <body>
-  <header class="nav">
-    <div class="nav-inner">
-      <div class="brand">
-        <span class="dot" aria-hidden="true"></span>
-        <span>Luis Vega</span>
+
+<header>
+  <div class="nav">
+    <span>Luis Vega</span>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="https://github.com/Luisv-Cyber" target="_blank">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="avatar-wrap">
+      <img src="assets/avatar.png" alt="Cyber avatar" />
+    </div>
+
+    <div class="hero-card">
+      <h1>Building reliable security & infrastructure projects.</h1>
+      <p>
+        I’m Luis — Security+ & Network+ certified. I focus on clean documentation,
+        automation, identity systems, and practical labs that explain the “why” and “how.”
+      </p>
+
+      <div class="tags">
+        <span class="tag">Security+</span>
+        <span class="tag">Network+</span>
+        <span class="tag">Azure Sentinel</span>
+        <span class="tag">SSO / SAML</span>
+        <span class="tag">Linux / Bash</span>
       </div>
 
-      <nav class="menu" aria-label="Primary">
-        <a href="#home">Home</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-        <a href="https://github.com/Luisv-Cyber" target="_blank" rel="noreferrer">GitHub</a>
-      </nav>
-
-      <div class="right">
-        <span class="pill mono" title="Status">Available • Hybrid-friendly</span>
-        <button class="toggle" id="themeToggle" type="button" aria-label="Toggle theme">Light</button>
+      <div class="buttons">
+        <a href="#projects">View My Work</a>
+        <a href="https://github.com/Luisv-Cyber" target="_blank">Visit GitHub</a>
       </div>
     </div>
-  </header>
+  </section>
 
-  <main class="wrap" id="home">
-    <section class="hero">
-      <div class="card hero-card">
-        <h1>Building reliable security + infrastructure projects.</h1>
-        <p class="sub">
-          I’m Luis — Security+ & Network+ certified. I like clean documentation, automation, and practical labs that explain the “why” and “how.”
-        </p>
+  <h2 id="projects">Featured Projects</h2>
+  <div class="projects">
+    <div class="project">
+      <h3>Azure Sentinel Global Attack Map</h3>
+      <p>Cloud SOC lab visualizing RDP brute-force activity using Azure Sentinel.</p>
+      <a href="https://github.com/Luisv-Cyber/Azure-sentinel-global-attack-map" target="_blank">View Repo →</a>
+    </div>
 
-        <div class="badges" aria-label="Highlights">
-          <span class="badge">Security+</span>
-          <span class="badge">Network+</span>
-          <span class="badge">Azure • Sentinel</span>
-          <span class="badge">SSO • SAML</span>
-          <span class="badge">Linux • Bash</span>
-        </div>
+    <div class="project">
+      <h3>Flask SAML Auth (Google Workspace)</h3>
+      <p>SSO implementation using SAML 2.0 with Google Workspace as IdP.</p>
+      <a href="https://github.com/Luisv-Cyber/flask-saml-auth" target="_blank">View Repo →</a>
+    </div>
 
-        <div class="cta">
-          <a class="btn" href="#projects">View My Work</a>
-          <a class="btn ghost" href="https://github.com/Luisv-Cyber" target="_blank" rel="noreferrer">Visit GitHub</a>
-        </div>
-      </div>
+    <div class="project">
+      <h3>File Integrity Monitoring (Bash + Cron)</h3>
+      <p>Linux file integrity monitoring using Bash scripting and cron jobs.</p>
+      <a href="https://github.com/Luisv-Cyber/File-Integrity-Monitoring-with-Bash-Cron" target="_blank">View Repo →</a>
+    </div>
+  </div>
 
-      <aside class="card side" aria-label="Quick info">
-        <div class="mini">
-          <h3>What I’m focused on</h3>
-          <p>Identity, security monitoring, and automation-driven projects that are easy to understand and reproduce.</p>
-        </div>
-        <div class="mini">
-          <h3>Preferred workflow</h3>
-          <p>Asynchronous communication, clear requirements, and room to execute independently.</p>
-        </div>
-        <div class="mini">
-          <h3>Contact</h3>
-          <p>
-            <span class="mono">Luisv-Cyber</span> on GitHub<br/>
-            <a class="btn ghost" style="margin-top:10px; width:100%; justify-content:center"
-               href="#contact">Get in touch</a>
-          </p>
-        </div>
-      </aside>
-    </section>
+  <footer id="contact">
+    <div>© <script>document.write(new Date().getFullYear())</script> Luis Vega</div>
+    <div>
+      <a href="https://linkedin.com/in/luisvega03" target="_blank">LinkedIn</a> ·
+      <a href="https://github.com/Luisv-Cyber" target="_blank">GitHub</a>
+    </div>
+  </footer>
+</main>
 
-    <section class="section" id="projects">
-      <h2>Featured Projects</h2>
-      <p>Three projects that showcase cloud security monitoring, identity integration, and integrity monitoring automation.</p>
-
-      <div class="grid">
-        <!-- Project 1 -->
-        <article class="project">
-          <div class="kicker">Cloud SOC Lab</div>
-          <h3>Azure Sentinel Global Attack Map</h3>
-          <p>
-            Azure Sentinel lab to visualize RDP brute-force activity and security telemetry in an interactive map workflow.
-          </p>
-          <div class="tags">
-            <span class="tag">Azure</span>
-            <span class="tag">Sentinel</span>
-            <span class="tag">Log Analytics</span>
-            <span class="tag">KQL</span>
-          </div>
-          <div class="proj-actions">
-            <a class="btn" target="_blank" rel="noreferrer"
-               href="https://github.com/Luisv-Cyber/Azure-sentinel-global-attack-map">View Repo</a>
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="project">
-          <div class="kicker">Identity Integration</div>
-          <h3>Flask SAML Auth (Google Workspace)</h3>
-          <p>
-            Single Sign-On implementation using SAML 2.0 with Google Workspace as IdP and a Flask application as SP.
-          </p>
-          <div class="tags">
-            <span class="tag">SSO</span>
-            <span class="tag">SAML</span>
-            <span class="tag">Flask</span>
-            <span class="tag">Identity</span>
-          </div>
-          <div class="proj-actions">
-            <a class="btn" target="_blank" rel="noreferrer"
-               href="https://github.com/Luisv-Cyber/flask-saml-auth">View Repo</a>
-          </div>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="project">
-          <div class="kicker">Linux Automation</div>
-          <h3>File Integrity Monitoring (Bash + Cron)</h3>
-          <p>
-            Simple file integrity monitoring using Bash scripts and cron scheduling to detect unauthorized changes.
-          </p>
-          <div class="tags">
-            <span class="tag">Bash</span>
-            <span class="tag">Cron</span>
-            <span class="tag">Linux</span>
-            <span class="tag">Monitoring</span>
-          </div>
-          <div class="proj-actions">
-            <a class="btn" target="_blank" rel="noreferrer"
-               href="https://github.com/Luisv-Cyber/File-Integrity-Monitoring-with-Bash-Cron">View Repo</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <h2>Contact</h2>
-      <p>If you want to connect about IT, security projects, or opportunities, here are the best ways to reach me.</p>
-
-      <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
-        <div class="project" style="min-height:auto;">
-          <div class="kicker">GitHub</div>
-          <h3 class="mono">@Luisv-Cyber</h3>
-          <p>Repositories, labs, and ongoing work.</p>
-          <div class="proj-actions">
-            <a class="btn" target="_blank" rel="noreferrer" href="https://github.com/Luisv-Cyber">Open GitHub</a>
-          </div>
-        </div>
-
-        <div class="project" style="min-height:auto;">
-          <div class="kicker">LinkedIn</div>
-          <h3>Connect professionally</h3>
-          <p>Swap notes, roles, and project ideas.</p>
-          <div class="proj-actions">
-            <!-- Replace with your LinkedIn if you want -->
-            <a class="btn ghost" target="_blank" rel="noreferrer" href="https://linkedin.com/in/luisvega03">Open LinkedIn</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div>© <span id="year"></span> Luis Vega</div>
-      <div class="mono">Built for GitHub Pages • Single-file HTML</div>
-    </footer>
-  </main>
-
-  <script>
-    // footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // theme toggle with localStorage
-    const root = document.documentElement;
-    const btn = document.getElementById("themeToggle");
-
-    function setTheme(mode){
-      if(mode === "light"){
-        root.setAttribute("data-theme","light");
-        btn.textContent = "Dark";
-      } else {
-        root.removeAttribute("data-theme");
-        btn.textContent = "Light";
-      }
-      localStorage.setItem("theme", mode);
-    }
-
-    const saved = localStorage.getItem("theme");
-    if(saved === "light") setTheme("light");
-    else setTheme("dark");
-
-    btn.addEventListener("click", () => {
-      const isLight = root.getAttribute("data-theme") === "light";
-      setTheme(isLight ? "dark" : "light");
-    });
-  </script>
 </body>
 </html>
-
