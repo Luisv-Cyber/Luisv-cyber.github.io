@@ -3,257 +3,522 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Luis Vega | Projects</title>
-  <meta name="description" content="Luis Vega — IT / Security Projects Portfolio" />
+  <title>Luis Vega | Security Projects Portfolio</title>
+  <meta name="description" content="Luis Vega — Security, identity, and infrastructure portfolio." />
 
   <style>
     :root{
-      --bg: #0b1020;
+      --bg: #071120;
+      --bg-elev: #0d1830;
       --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.08);
-      --text: #e9ecf2;
-      --muted: rgba(233,236,242,.72);
+      --panel-strong: rgba(255,255,255,.09);
+      --panel-soft: rgba(255,255,255,.045);
+      --text: #edf2ff;
+      --muted: rgba(237,242,255,.74);
+      --muted-2: rgba(237,242,255,.58);
       --border: rgba(255,255,255,.12);
-      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --border-strong: rgba(124,92,255,.3);
+      --shadow: 0 22px 60px rgba(0,0,0,.38);
+      --shadow-soft: 0 10px 25px rgba(0,0,0,.22);
       --accent: #7c5cff;
-      --accent2:#23c9ff;
-      --ring: rgba(124,92,255,.35);
+      --accent-2: #25cfff;
+      --accent-3: #8df3ff;
+      --ring: rgba(124,92,255,.24);
+      --success: #7ef0c3;
+      --max: 1160px;
+      --radius: 24px;
     }
+
     [data-theme="light"]{
-      --bg: #f6f7fb;
-      --panel: rgba(0,0,0,.04);
-      --panel2: rgba(0,0,0,.06);
+      --bg: #f5f7fc;
+      --bg-elev: #ffffff;
+      --panel: rgba(10,20,40,.04);
+      --panel-strong: rgba(10,20,40,.06);
+      --panel-soft: rgba(10,20,40,.03);
       --text: #0f172a;
-      --muted: rgba(15,23,42,.68);
-      --border: rgba(15,23,42,.12);
-      --shadow: 0 18px 50px rgba(2,6,23,.10);
+      --muted: rgba(15,23,42,.72);
+      --muted-2: rgba(15,23,42,.56);
+      --border: rgba(15,23,42,.10);
+      --border-strong: rgba(91,92,255,.22);
+      --shadow: 0 18px 45px rgba(2,6,23,.09);
+      --shadow-soft: 0 10px 20px rgba(2,6,23,.06);
       --accent: #5b5cff;
-      --accent2:#0ea5e9;
-      --ring: rgba(91,92,255,.25);
+      --accent-2: #0ea5e9;
+      --accent-3: #38bdf8;
+      --ring: rgba(91,92,255,.16);
+      --success: #059669;
     }
 
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html{scroll-behavior:smooth}
+    html,body{min-height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background:
-        radial-gradient(1200px 600px at 15% 10%, rgba(124,92,255,.25), transparent 55%),
-        radial-gradient(900px 500px at 85% 20%, rgba(35,201,255,.18), transparent 60%),
-        radial-gradient(700px 420px at 50% 90%, rgba(124,92,255,.18), transparent 55%),
-        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       color:var(--text);
-      line-height:1.5;
+      background:
+        radial-gradient(900px 560px at 10% 8%, rgba(124,92,255,.22), transparent 58%),
+        radial-gradient(780px 480px at 85% 12%, rgba(37,207,255,.14), transparent 62%),
+        radial-gradient(760px 480px at 55% 100%, rgba(124,92,255,.16), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.02), transparent),
+        var(--bg);
+      line-height:1.55;
     }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 70px;}
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    button{font:inherit}
+
+    .shell{max-width:var(--max);margin:0 auto;padding:0 20px}
+
     .nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(0,0,0,.25), transparent);
+      position:sticky;
+      top:0;
+      z-index:100;
       padding:14px 0;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(6,10,22,.72), rgba(6,10,22,.28), transparent);
+      border-bottom:1px solid transparent;
+    }
+    [data-theme="light"] .nav{
+      background: linear-gradient(to bottom, rgba(245,247,252,.85), rgba(245,247,252,.55), transparent);
     }
     .nav-inner{
-      max-width:1100px; margin:0 auto; padding:0 18px;
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
     }
-    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
-    .dot{
-      width:10px; height:10px; border-radius:999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 6px var(--ring);
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:.2px;
+      min-width:max-content;
     }
-    .menu{display:flex; gap:14px; flex-wrap:wrap; align-items:center}
+    .brand-mark{
+      width:14px;
+      height:14px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      box-shadow:0 0 0 7px var(--ring), 0 0 28px rgba(124,92,255,.25);
+    }
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
     .menu a{
-      padding:8px 10px;
-      border-radius:10px;
       color:var(--muted);
+      padding:9px 12px;
+      border-radius:12px;
+      transition:.18s ease;
       border:1px solid transparent;
     }
-    .menu a:hover{color:var(--text); border-color:var(--border); background:var(--panel);}
-    .right{display:flex; gap:10px; align-items:center}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:9px 12px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background: var(--panel);
-      box-shadow: var(--shadow);
-      color:var(--muted);
-      font-size:14px;
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px;
-      border-radius:14px;
-      border:1px solid var(--border);
-      background: linear-gradient(135deg, rgba(124,92,255,.18), rgba(35,201,255,.12));
-      box-shadow: var(--shadow);
+    .menu a:hover,
+    .menu a:focus-visible{
       color:var(--text);
-      font-weight:600;
-      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      border-color:var(--border);
+      background:var(--panel);
+      outline:none;
     }
-    .btn:hover{transform: translateY(-1px); border-color: rgba(124,92,255,.35);}
-    .btn:active{transform: translateY(0);}
-    .btn.ghost{background:var(--panel); color:var(--text);}
+    .right{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .pill,
+    .toggle,
+    .small-chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--border);
+      background:var(--panel);
+      border-radius:999px;
+      color:var(--muted);
+      box-shadow:var(--shadow-soft);
+    }
+    .pill{padding:9px 12px;font-size:13px}
+    .small-chip{padding:7px 10px;font-size:12px}
+    .status-dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:var(--success);
+      box-shadow:0 0 0 5px rgba(126,240,195,.12);
+      flex:none;
+    }
     .toggle{
       cursor:pointer;
-      user-select:none;
-      background:var(--panel);
-      border:1px solid var(--border);
-      border-radius:999px;
-      padding:8px 10px;
-      color:var(--muted);
+      padding:9px 11px;
+      transition:.18s ease;
     }
-    .toggle:hover{color:var(--text)}
+    .toggle:hover{color:var(--text);transform:translateY(-1px)}
+
     .hero{
-      padding:34px 0 18px;
+      padding:36px 0 10px;
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
+      grid-template-columns:1.15fr .85fr;
       gap:18px;
       align-items:stretch;
     }
-    @media (max-width: 900px){
-      .hero{grid-template-columns:1fr; padding-top:24px;}
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr;padding-top:24px}
     }
+
     .card{
-      border:1px solid var(--border);
-      background: var(--panel);
-      border-radius:22px;
-      box-shadow: var(--shadow);
+      position:relative;
       overflow:hidden;
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.038));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      isolation:isolate;
     }
-    .hero-card{padding:28px;}
-    h1{
-      margin:0 0 10px;
-      font-size: clamp(28px, 4vw, 44px);
-      letter-spacing:-.6px;
-      line-height:1.15;
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:
+        radial-gradient(540px 180px at 0% 0%, rgba(124,92,255,.12), transparent 58%),
+        radial-gradient(380px 170px at 100% 0%, rgba(37,207,255,.10), transparent 55%);
+      pointer-events:none;
+      z-index:-1;
+    }
+
+    .hero-card{padding:30px}
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:16px;
+      color:var(--muted);
+      font-size:13px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .hero h1{
+      margin:0 0 12px;
+      font-size:clamp(34px,4.6vw,58px);
+      line-height:1.04;
+      letter-spacing:-1.4px;
+      max-width:11ch;
+    }
+    .accent-text{
+      background:linear-gradient(135deg,var(--text),var(--accent-3));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
     }
     .sub{
-      margin:0 0 18px;
+      margin:0 0 20px;
       color:var(--muted);
-      font-size:16px;
+      font-size:17px;
+      max-width:62ch;
     }
-    .badges{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px}
-    .badge{
-      padding:7px 10px;
-      border-radius:999px;
+    .hero-meta{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:10px;
+      margin:0 0 18px;
+    }
+    @media (max-width: 620px){
+      .hero-meta{grid-template-columns:1fr}
+    }
+    .metric{
+      padding:14px;
+      border-radius:18px;
       border:1px solid var(--border);
-      background: var(--panel2);
+      background:var(--panel-soft);
+    }
+    .metric strong{
+      display:block;
+      font-size:14px;
+      margin-bottom:4px;
+    }
+    .metric span{
       color:var(--muted);
       font-size:13px;
     }
-    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+    .badge{
+      padding:8px 11px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:var(--panel-strong);
+      color:var(--muted);
+      font-size:13px;
+      transition:.18s ease;
+    }
+    .badge:hover{transform:translateY(-1px);color:var(--text)}
+    .cta{display:flex;gap:10px;flex-wrap:wrap}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      min-height:46px;
+      padding:12px 16px;
+      border-radius:15px;
+      border:1px solid var(--border);
+      color:var(--text);
+      font-weight:650;
+      background:linear-gradient(135deg, rgba(124,92,255,.24), rgba(37,207,255,.12));
+      box-shadow:var(--shadow-soft);
+      transition:transform .16s ease, border-color .2s ease, background .2s ease;
+    }
+    .btn:hover,
+    .btn:focus-visible{
+      transform:translateY(-2px);
+      border-color:var(--border-strong);
+      outline:none;
+    }
+    .btn.ghost{background:var(--panel)}
+    .btn.subtle{background:var(--panel-soft)}
+
     .side{
       padding:18px;
-      display:flex; flex-direction:column; gap:12px;
+      display:grid;
+      gap:12px;
+      align-content:start;
     }
-    .side h3{margin:0; font-size:16px}
-    .side p{margin:0; color:var(--muted); font-size:14px}
-    .side .mini{
+    .mini{
       border:1px solid var(--border);
-      background: var(--panel2);
-      border-radius:18px;
-      padding:14px;
+      background:var(--panel-strong);
+      border-radius:20px;
+      padding:16px;
     }
-    .section{padding:26px 0 10px;}
+    .mini h3{margin:0 0 6px;font-size:16px}
+    .mini p{margin:0;color:var(--muted);font-size:14px}
+    .stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+
+    .section{padding:28px 0 6px}
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:16px;
+      flex-wrap:wrap;
+    }
     .section h2{
-      margin:0 0 10px;
-      font-size:22px;
-      letter-spacing:-.2px;
+      margin:0 0 8px;
+      font-size:24px;
+      letter-spacing:-.4px;
     }
-    .section p{margin:0 0 16px; color:var(--muted)}
+    .section p{
+      margin:0;
+      color:var(--muted);
+      max-width:72ch;
+    }
+
     .grid{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:16px;
     }
     @media (max-width: 980px){
-      .grid{grid-template-columns: repeat(2,1fr);}
+      .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     }
-    @media (max-width: 620px){
-      .grid{grid-template-columns: 1fr;}
+    @media (max-width: 680px){
+      .grid{grid-template-columns:1fr}
     }
+
     .project{
-      padding:18px;
-      border-radius:22px;
-      border:1px solid var(--border);
-      background: linear-gradient(180deg, var(--panel2), var(--panel));
-      box-shadow: var(--shadow);
       position:relative;
+      padding:18px;
+      min-height:230px;
+      display:flex;
+      flex-direction:column;
+      border-radius:24px;
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.035));
+      box-shadow:var(--shadow);
       overflow:hidden;
-      min-height: 180px;
+      transition:transform .2s ease, border-color .2s ease;
     }
-    .project:before{
+    .project:hover{
+      transform:translateY(-4px);
+      border-color:var(--border-strong);
+    }
+    .project::before{
       content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(450px 180px at 20% 0%, rgba(124,92,255,.22), transparent 60%),
-                  radial-gradient(350px 160px at 85% 10%, rgba(35,201,255,.18), transparent 65%);
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(480px 180px at 12% 0%, rgba(124,92,255,.2), transparent 60%),
+        radial-gradient(340px 150px at 100% 6%, rgba(37,207,255,.14), transparent 60%);
+      opacity:.95;
       pointer-events:none;
-      opacity:.9;
     }
     .project > *{position:relative}
     .kicker{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
       font-size:12px;
       letter-spacing:.12em;
       text-transform:uppercase;
-      color:var(--muted);
+      color:var(--muted-2);
       margin-bottom:10px;
     }
-    .project h3{margin:0 0 8px; font-size:18px; letter-spacing:-.2px}
-    .project p{margin:0 0 14px; color:var(--muted); font-size:14px}
-    .tags{display:flex; flex-wrap:wrap; gap:8px}
+    .kicker .featured{
+      padding:5px 8px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      font-size:11px;
+      letter-spacing:.08em;
+      color:var(--text);
+    }
+    .project h3{margin:0 0 9px;font-size:22px;line-height:1.2;letter-spacing:-.35px}
+    .project p{margin:0 0 14px;color:var(--muted);font-size:14px}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
     .tag{
       font-size:12px;
       color:var(--muted);
       border:1px solid var(--border);
-      background: rgba(255,255,255,.02);
+      background:rgba(255,255,255,.03);
       padding:6px 9px;
       border-radius:999px;
     }
-    .proj-actions{margin-top:14px; display:flex; gap:10px; flex-wrap:wrap}
+    .proj-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+
+    .spotlight{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:16px;
+    }
+    @media (max-width: 900px){
+      .spotlight{grid-template-columns:1fr}
+    }
+    .spotlight-main,
+    .spotlight-side{padding:22px}
+    .spotlight-main h3,
+    .spotlight-side h3{margin:0 0 8px;font-size:20px}
+    .spotlight-main p,
+    .spotlight-side p{margin:0;color:var(--muted)}
+    .checklist{display:grid;gap:10px;margin-top:16px}
+    .check{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color:var(--muted);
+    }
+    .check b{color:var(--text)}
+    .check-mark{
+      width:20px;height:20px;border-radius:999px;flex:none;margin-top:1px;
+      display:grid;place-items:center;
+      border:1px solid var(--border);
+      background:var(--panel-strong);
+      color:var(--accent-3);
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:16px;
+    }
+    @media (max-width: 700px){
+      .contact-grid{grid-template-columns:1fr}
+    }
+
     .footer{
       margin-top:34px;
-      padding-top:18px;
+      padding:20px 0 40px;
       border-top:1px solid var(--border);
       color:var(--muted);
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
       font-size:14px;
     }
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+
+    .fade-in{
+      opacity:0;
+      transform:translateY(12px);
+      animation:fadeUp .55s ease forwards;
+    }
+    .fade-in:nth-child(2){animation-delay:.06s}
+    .fade-in:nth-child(3){animation-delay:.12s}
+    .fade-in:nth-child(4){animation-delay:.18s}
+    @keyframes fadeUp{
+      to{opacity:1;transform:none}
+    }
+
+    @media (max-width: 760px){
+      .nav-inner{flex-wrap:wrap;justify-content:center}
+      .right{width:100%;justify-content:center}
+      .menu{order:3}
+    }
   </style>
 </head>
-
 <body>
   <header class="nav">
     <div class="nav-inner">
-      <div class="brand">
-        <span class="dot" aria-hidden="true"></span>
+      <a class="brand" href="#home" aria-label="Luis Vega home">
+        <span class="brand-mark" aria-hidden="true"></span>
         <span>Luis Vega</span>
-      </div>
+      </a>
 
       <nav class="menu" aria-label="Primary">
         <a href="#home">Home</a>
         <a href="#projects">Projects</a>
+        <a href="#spotlight">Lab Spotlight</a>
         <a href="#contact">Contact</a>
         <a href="https://github.com/Luisv-Cyber" target="_blank" rel="noreferrer">GitHub</a>
       </nav>
 
       <div class="right">
-        <span class="pill mono" title="Status">Available • Hybrid-friendly</span>
+        <span class="pill mono" title="Status"><span class="status-dot" aria-hidden="true"></span>Available • Hybrid-friendly</span>
         <button class="toggle" id="themeToggle" type="button" aria-label="Toggle theme">Light</button>
       </div>
     </div>
   </header>
 
-  <main class="wrap" id="home">
+  <main class="shell" id="home">
     <section class="hero">
-      <div class="card hero-card">
-        <h1>Building reliable security + infrastructure projects.</h1>
+      <div class="card hero-card fade-in">
+        <div class="eyebrow">
+          <span class="small-chip">Security</span>
+          <span class="small-chip">Identity</span>
+          <span class="small-chip">Infrastructure</span>
+        </div>
+
+        <h1>Building <span class="accent-text">reliable security</span> and infrastructure projects.</h1>
+
         <p class="sub">
-          I’m Luis — Security+ & Network+ certified. I like clean documentation, automation, and practical labs that explain the “why” and “how.”
+          I’m Luis — Security+ and Network+ certified. I build practical labs around identity, monitoring, and Linux automation with documentation that makes the why, how, and impact easy to follow.
         </p>
+
+        <div class="hero-meta" aria-label="Quick highlights">
+          <div class="metric">
+            <strong>Focused on</strong>
+            <span>Blue-team labs, identity workflows, and reproducible security projects.</span>
+          </div>
+          <div class="metric">
+            <strong>Working style</strong>
+            <span>Clear documentation, async collaboration, and steady execution.</span>
+          </div>
+          <div class="metric">
+            <strong>Best fit</strong>
+            <span>SOC, IAM, junior cloud security, and security operations support roles.</span>
+          </div>
+        </div>
 
         <div class="badges" aria-label="Highlights">
           <span class="badge">Security+</span>
@@ -261,6 +526,7 @@
           <span class="badge">Azure • Sentinel</span>
           <span class="badge">SSO • SAML</span>
           <span class="badge">Linux • Bash</span>
+          <span class="badge">SOC Labs</span>
         </div>
 
         <div class="cta">
@@ -269,38 +535,52 @@
         </div>
       </div>
 
-      <aside class="card side" aria-label="Quick info">
+      <aside class="card side fade-in" aria-label="Quick info">
         <div class="mini">
           <h3>What I’m focused on</h3>
-          <p>Identity, security monitoring, and automation-driven projects that are easy to understand and reproduce.</p>
+          <p>Identity, security monitoring, Linux automation, and entry-level cloud security labs that are easy to reproduce and explain.</p>
+          <div class="stack">
+            <span class="tag">Documentation-first</span>
+            <span class="tag">Hands-on labs</span>
+            <span class="tag">Repeatable builds</span>
+          </div>
         </div>
+
         <div class="mini">
-          <h3>Preferred workflow</h3>
-          <p>Asynchronous communication, clear requirements, and room to execute independently.</p>
+          <h3>Current direction</h3>
+          <p>Growing toward SOC, IAM, and cloud security work with projects that show troubleshooting, visibility, and operational thinking.</p>
         </div>
+
         <div class="mini">
           <h3>Contact</h3>
           <p>
-            <span class="mono">Luisv-Cyber</span> on GitHub<br/>
-            <a class="btn ghost" style="margin-top:10px; width:100%; justify-content:center"
-               href="#contact">Get in touch</a>
+            <span class="mono">Luisv-Cyber</span> on GitHub<br />
+            <span class="mono">/in/luisvega03</span> on LinkedIn
           </p>
+          <div class="proj-actions" style="margin-top:12px">
+            <a class="btn ghost" href="#contact" style="width:100%">Get in touch</a>
+          </div>
         </div>
       </aside>
     </section>
 
     <section class="section" id="projects">
-      <h2>Featured Projects</h2>
-      <p>Three projects that showcase cloud security monitoring, identity integration, and integrity monitoring automation.</p>
+      <div class="section-head">
+        <div>
+          <h2>Featured Projects</h2>
+          <p>A portfolio focused on cloud visibility, identity integration, and Linux-based monitoring.</p>
+        </div>
+        <a class="btn subtle" href="https://github.com/Luisv-Cyber?tab=repositories" target="_blank" rel="noreferrer">See all repositories</a>
+      </div>
 
       <div class="grid">
-        <!-- Project 1 -->
-        <article class="project">
-          <div class="kicker">Cloud SOC Lab</div>
+        <article class="project fade-in">
+          <div class="kicker">
+            <span>Cloud SOC Lab</span>
+            <span class="featured">Featured</span>
+          </div>
           <h3>Azure Sentinel Global Attack Map</h3>
-          <p>
-            Azure Sentinel lab to visualize RDP brute-force activity and security telemetry in an interactive map workflow.
-          </p>
+          <p>Azure Sentinel lab that visualizes RDP brute-force activity and security telemetry in an interactive attack-map workflow.</p>
           <div class="tags">
             <span class="tag">Azure</span>
             <span class="tag">Sentinel</span>
@@ -308,18 +588,17 @@
             <span class="tag">KQL</span>
           </div>
           <div class="proj-actions">
-            <a class="btn" target="_blank" rel="noreferrer"
-               href="https://github.com/Luisv-Cyber/Azure-sentinel-global-attack-map">View Repo</a>
+            <a class="btn" target="_blank" rel="noreferrer" href="https://github.com/Luisv-Cyber/Azure-sentinel-global-attack-map">View Repo</a>
           </div>
         </article>
 
-        <!-- Project 2 -->
-        <article class="project">
-          <div class="kicker">Identity Integration</div>
+        <article class="project fade-in">
+          <div class="kicker">
+            <span>Identity Integration</span>
+            <span class="featured">SSO</span>
+          </div>
           <h3>Flask SAML Auth (Google Workspace)</h3>
-          <p>
-            Single Sign-On implementation using SAML 2.0 with Google Workspace as IdP and a Flask application as SP.
-          </p>
+          <p>Single sign-on implementation using SAML 2.0 with Google Workspace as the identity provider and a Flask application as the service provider.</p>
           <div class="tags">
             <span class="tag">SSO</span>
             <span class="tag">SAML</span>
@@ -327,18 +606,17 @@
             <span class="tag">Identity</span>
           </div>
           <div class="proj-actions">
-            <a class="btn" target="_blank" rel="noreferrer"
-               href="https://github.com/Luisv-Cyber/flask-saml-auth">View Repo</a>
+            <a class="btn" target="_blank" rel="noreferrer" href="https://github.com/Luisv-Cyber/flask-saml-auth">View Repo</a>
           </div>
         </article>
 
-        <!-- Project 3 -->
-        <article class="project">
-          <div class="kicker">Linux Automation</div>
+        <article class="project fade-in">
+          <div class="kicker">
+            <span>Linux Automation</span>
+            <span class="featured">Monitoring</span>
+          </div>
           <h3>File Integrity Monitoring (Bash + Cron)</h3>
-          <p>
-            Simple file integrity monitoring using Bash scripts and cron scheduling to detect unauthorized changes.
-          </p>
+          <p>Lightweight file integrity monitoring using Bash scripts and cron scheduling to flag unauthorized changes and support host visibility.</p>
           <div class="tags">
             <span class="tag">Bash</span>
             <span class="tag">Cron</span>
@@ -346,33 +624,94 @@
             <span class="tag">Monitoring</span>
           </div>
           <div class="proj-actions">
-            <a class="btn" target="_blank" rel="noreferrer"
-               href="https://github.com/Luisv-Cyber/File-Integrity-Monitoring-with-Bash-Cron">View Repo</a>
+            <a class="btn" target="_blank" rel="noreferrer" href="https://github.com/Luisv-Cyber/File-Integrity-Monitoring-with-Bash-Cron">View Repo</a>
+          </div>
+        </article>
+
+        <article class="project fade-in">
+          <div class="kicker">
+            <span>Recent Lab</span>
+            <span class="featured">New</span>
+          </div>
+          <h3>Your Latest Security Lab</h3>
+          <p>Swap this placeholder with the lab we just built. Add one sentence on what problem it solves, how you implemented it, and why it matters.</p>
+          <div class="tags">
+            <span class="tag">Replace</span>
+            <span class="tag">With</span>
+            <span class="tag">Your New Repo</span>
+          </div>
+          <div class="proj-actions">
+            <a class="btn ghost" href="#spotlight">Add Repo Link</a>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="section" id="contact">
-      <h2>Contact</h2>
-      <p>If you want to connect about IT, security projects, or opportunities, here are the best ways to reach me.</p>
+    <section class="section" id="spotlight">
+      <div class="section-head">
+        <div>
+          <h2>Lab Spotlight</h2>
+          <p>Use this section to feature the newest lab with a little more context than the project grid allows.</p>
+        </div>
+      </div>
 
-      <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="spotlight">
+        <article class="card spotlight-main">
+          <div class="kicker"><span>Newest Build</span><span class="featured">Spotlight</span></div>
+          <h3>Recent Security Lab Placeholder</h3>
+          <p>
+            Replace this block with your latest project summary. A strong version usually explains the environment, the security goal, the tools used, and the outcome in two or three short paragraphs.
+          </p>
+
+          <div class="checklist">
+            <div class="check"><span class="check-mark">✓</span><span><b>Problem:</b> What challenge or threat the lab demonstrates.</span></div>
+            <div class="check"><span class="check-mark">✓</span><span><b>Build:</b> What services, tools, or scripts you used.</span></div>
+            <div class="check"><span class="check-mark">✓</span><span><b>Outcome:</b> What insight, alerting, or visibility the lab produced.</span></div>
+          </div>
+
+          <div class="proj-actions">
+            <a class="btn" href="#contact">Feature this project</a>
+            <a class="btn ghost" href="https://github.com/Luisv-Cyber" target="_blank" rel="noreferrer">Open GitHub</a>
+          </div>
+        </article>
+
+        <aside class="card spotlight-side">
+          <h3>Good portfolio touches</h3>
+          <p>Small details help: clearer hierarchy, one featured “new” item, better spacing, slightly stronger copy, and a little motion without making the page feel busy.</p>
+
+          <div class="checklist">
+            <div class="check"><span class="check-mark">✓</span><span>Sticky nav with cleaner hover states</span></div>
+            <div class="check"><span class="check-mark">✓</span><span>Added a spotlight section for your newest lab</span></div>
+            <div class="check"><span class="check-mark">✓</span><span>Stronger project card hierarchy and labels</span></div>
+            <div class="check"><span class="check-mark">✓</span><span>Better hero messaging and cleaner metrics</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="section-head">
+        <div>
+          <h2>Contact</h2>
+          <p>If you want to connect about security labs, IT projects, or early-career security opportunities, these are the best ways to reach me.</p>
+        </div>
+      </div>
+
+      <div class="contact-grid">
         <div class="project" style="min-height:auto;">
-          <div class="kicker">GitHub</div>
+          <div class="kicker"><span>GitHub</span></div>
           <h3 class="mono">@Luisv-Cyber</h3>
-          <p>Repositories, labs, and ongoing work.</p>
+          <p>Repositories, labs, write-ups, and ongoing project work.</p>
           <div class="proj-actions">
             <a class="btn" target="_blank" rel="noreferrer" href="https://github.com/Luisv-Cyber">Open GitHub</a>
           </div>
         </div>
 
         <div class="project" style="min-height:auto;">
-          <div class="kicker">LinkedIn</div>
+          <div class="kicker"><span>LinkedIn</span></div>
           <h3>Connect professionally</h3>
-          <p>Swap notes, roles, and project ideas.</p>
+          <p>Great for networking, role conversations, and project-based introductions.</p>
           <div class="proj-actions">
-            <!-- Replace with your LinkedIn if you want -->
             <a class="btn ghost" target="_blank" rel="noreferrer" href="https://linkedin.com/in/luisvega03">Open LinkedIn</a>
           </div>
         </div>
@@ -386,16 +725,14 @@
   </main>
 
   <script>
-    // footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // theme toggle with localStorage
     const root = document.documentElement;
     const btn = document.getElementById("themeToggle");
 
     function setTheme(mode){
       if(mode === "light"){
-        root.setAttribute("data-theme","light");
+        root.setAttribute("data-theme", "light");
         btn.textContent = "Dark";
       } else {
         root.removeAttribute("data-theme");
@@ -415,3 +752,4 @@
   </script>
 </body>
 </html>
+
