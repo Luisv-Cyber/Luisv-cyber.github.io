@@ -196,7 +196,7 @@ button{font:inherit;cursor:pointer}
 /* ── HERO ── */
 .hero{
   padding:36px 0 10px;
-  display:grid;grid-template-columns:1.15fr .85fr;
+  display:grid;grid-template-columns:1fr 1fr;
   gap:18px;align-items:stretch;
 }
 @media(max-width:920px){.hero{grid-template-columns:1fr;padding-top:24px}}
@@ -223,14 +223,14 @@ button{font:inherit;cursor:pointer}
 .hero h1{
   font-family:var(--font-display);
   margin:0 0 14px;
-  font-size:clamp(36px,4.8vw,60px);
-  line-height:1.02;letter-spacing:-1.6px;font-weight:800;
+  font-size:clamp(28px,3.4vw,44px);
+  line-height:1.08;letter-spacing:-1.2px;font-weight:800;max-width:9ch;
 }
 .accent-text{
   background:linear-gradient(135deg,var(--text),var(--accent-3));
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
-.sub{margin:0 0 22px;color:var(--muted);font-size:16.5px;max-width:60ch;line-height:1.65;}
+.sub{margin:0 0 18px;color:var(--muted);font-size:15px;max-width:54ch;line-height:1.65;}
 
 /* terminal typewriter */
 .typewriter-wrap{margin:0 0 22px;min-height:28px;}
@@ -244,18 +244,19 @@ button{font:inherit;cursor:pointer}
 @keyframes blink{0%,100%{border-color:var(--accent-3)}50%{border-color:transparent}}
 
 .hero-meta{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:10px;margin:0 0 18px;
+  display:grid;grid-template-columns:1fr;
+  gap:8px;margin:0 0 16px;
 }
 @media(max-width:620px){.hero-meta{grid-template-columns:1fr}}
 .metric{
-  padding:14px;border-radius:18px;
+  padding:11px 14px;border-radius:14px;
   border:1px solid var(--border);background:var(--panel-soft);
+  display:flex;gap:10px;align-items:baseline;
   transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;cursor:default;
 }
 .metric:hover{transform:scale(1.04);border-color:var(--border-strong);box-shadow:var(--shadow);}
-.metric strong{display:block;font-size:13px;font-weight:600;margin-bottom:5px;font-family:var(--font-display);}
-.metric span{color:var(--muted);font-size:13px;}
+.metric strong{display:block;font-size:12px;font-weight:700;white-space:nowrap;min-width:90px;font-family:var(--font-display);}
+.metric span{color:var(--muted);font-size:12.5px;line-height:1.45;}
 .badges{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
 .badge{
   padding:7px 11px;border-radius:999px;border:1px solid var(--border);
@@ -284,7 +285,7 @@ button{font:inherit;cursor:pointer}
 .btn.subtle{background:var(--panel-soft)}
 
 /* ── SIDEBAR ── */
-.side{padding:18px;display:grid;gap:12px;align-content:start;}
+.side{padding:18px;display:grid;gap:12px;align-content:stretch;}
 .mini{
   border:1px solid var(--border);background:var(--panel-strong);
   border-radius:20px;padding:16px;
@@ -588,6 +589,14 @@ button{font:inherit;cursor:pointer}
       <div class="mini">
         <h3>Current direction</h3>
         <p>Growing toward System Administrator and IAM roles — projects that show Active Directory management, identity lifecycle, access control, and operational thinking.</p>
+      </div>
+      <div class="mini">
+        <h3>Certifications</h3>
+        <div class="stack" style="margin-top:4px">
+          <span class="tag" style="border-color:var(--border-strong);color:var(--text)">🛡 CompTIA Security+</span>
+          <span class="tag" style="border-color:var(--border-strong);color:var(--text)">🌐 CompTIA Network+</span>
+        </div>
+        <p style="margin-top:10px;font-size:12.5px">Pursuing Azure Administrator (AZ-104) next.</p>
       </div>
       <div class="mini">
         <h3>Contact</h3>
